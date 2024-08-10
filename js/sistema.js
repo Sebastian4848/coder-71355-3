@@ -3,16 +3,16 @@
 
 //? Menu principal.
 
-const menu_str = `
-    Presiona 1 para mostrar el stock actual de herrajes.
-    Presiona 2 para agregar un nuevo herraje al inventario.
-    Presiona 3 para buscar herrajes.
-    Presiona 4 para agregar una incidencia al stock.
-    Presiona 5 para mostrar stock bajo.
-    Presiona 6 para eliminar un herraje.
-    Presiona 7 para reasignar los IDs de los herrajes.
-    Presiona 0 para VOLVER o SALIR.
-`
+// const menu_str = `
+//     Presiona 1 para mostrar el stock actual de herrajes.
+//     Presiona 2 para agregar un nuevo herraje al inventario.
+//     Presiona 3 para buscar herrajes.
+//     Presiona 4 para agregar una incidencia al stock.
+//     Presiona 5 para mostrar stock bajo.
+//     Presiona 6 para eliminar un herraje.
+//     Presiona 7 para reasignar los IDs de los herrajes.
+//     Presiona 0 para VOLVER o SALIR.
+// `
 
 //? Definicion del sistema como metodo constructor
 
@@ -84,3 +84,28 @@ function idReset(herrajes) {
     }
     mostrarTabla(herrajes);
 }
+
+let html = `<table border='1|1'>
+<tr>
+    <td>ID</td>
+    <td>Herraje</td>
+    <td>Stock</td>
+</tr>
+`
+
+function actualizarTabla(array) {
+
+    for (let i = 0; i < array.length; i++) {
+
+        html += '<tr>';
+        html += '<td>' + array[i].id + '</td>';
+        html += '<td>' + array[i].nombre + '</td>';
+        html += '<td>' + array[i].stock + '</td>';
+        html += '</tr>';
+    }
+
+    document.getElementById("table").innerHTML = html
+}
+
+
+actualizarTabla(herrajes)

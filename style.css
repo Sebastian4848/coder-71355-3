@@ -1,0 +1,93 @@
+:root {
+    --color1: rgb(77, 77, 77);
+    --color2: #223838;
+    --color3: #945a5a;
+    --bg-color: rgb(212, 212, 212);
+}
+
+font
+
+html {
+    height: 100vh;
+}
+
+html, body {
+    background-color: var(--bg-color);
+    font-family: sans-serif;
+}
+
+body {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1, h4, h5 {
+    margin:0;
+}
+
+h1 {
+    font-size: 6vh;
+    color:    --color2;
+}
+
+
+h4 {
+    margin-bottom: 5vh;
+    margin-right: -2vw;
+
+    font-size: 4vh;
+    color: var(--color2);
+    
+    /* text-shadow: 0px 0px 1vh;
+    animation: color_change 50s infinite; */
+}
+
+form {
+    margin-top: 5vh;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    color: var(--color3);
+}
+
+label {
+    margin-top: 1vh;
+}
+
+input {
+    padding: 2%;
+}
+
+/* input[type='submit'] {
+    background-color: var(--bg-color);
+    color: var(--color3);
+    font-weight: bold;
+    border: solid var(--color1) 2px;
+    margin-top: 3vh;
+    transition:0.5s background-color ;
+}
+
+
+input[type='submit']:hover {
+    background-color: var(--color1);
+    cursor: pointer;
+}
+ */
+
+
+/* @keyframes neon {
+    25% {text-shadow: 0 0 4vh;}
+    50% {text-shadow: 0 0 10vh;}
+    75% {text-shadow: 0 0 8vh;}
+}
+
+@keyframes color_change {
+    35% {color: #3dd908}
+    75% {color: #c2d919}
+}
+
+
+ */
