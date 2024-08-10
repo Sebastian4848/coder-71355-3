@@ -1,5 +1,16 @@
 //? PRODUCTOS: Definicion del stock inicial de herrajes.
 
+
+var html_base = `<table border='1|1'>
+<tr>
+    <td>ID</td>
+    <td>Herraje</td>
+    <td>Stock</td>
+</tr>
+`
+
+
+
 //? Clase Constructora del Objeto Herraje
 class Herraje {
     constructor(nombre, stock) {
@@ -35,7 +46,5 @@ let herrajes = [
     new Herraje('Argolla 2cm Plateado', 14),
     new Herraje('Argolla 2.5cm Plateado', 36),
     new Herraje('Argolla 3.2cm Plateado', 29),
-    new Herraje('Argolla 3.8cm Plateado', 21),
 
 ]
-

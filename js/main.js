@@ -33,37 +33,37 @@ function solicitarDato(tipo, mensaje, sugerencia = '') {
 
 //? Bucle principal del programa
 
-let salir = false
-while (!salir) {
+// let salir = false
+// while (!salir) {
 
-    let opcion = parseInt(prompt(menu_str));
-    switch (opcion) {
-        case 0:
-            alert("FIN. Para volver al menu principal presiona F5")
-            salir = true
-            break
-        case 1:
-            mostrarTabla(herrajes);
-            break
-        case 2:
-            sistema_stock.nuevoHerraje();
-            break
-        case 3:
-            filtrarHerrajes(herrajes);
-            break
-        case 4:
-            agregarIncidencia(herrajes);
-            break
-        case 5:
-            stockBajo(herrajes);
-            break
-        case 6:
-            eliminarHerraje(herrajes);
-            break
-        case 7:
-            idReset(herrajes);
-            break
-        default:
-            alert("Opcion inexistente. Intente de nuevo");
-    }
-}
+//     let opcion = parseInt(prompt(menu_str));
+//     switch (opcion) {
+//         case 0:
+//             alert("FIN. Para volver al menu principal presiona F5")
+//             salir = true
+//             break
+//         case 1:
+//             mostrarTabla(herrajes);
+//             break
+//         case 2:
+//             sistema_stock.nuevoHerraje();
+//             break
+//         case 3:
+//             filtrarHerrajes(herrajes);
+//             break
+//         case 4:
+//             agregarIncidencia(herrajes);
+//             break
+//         case 5:
+//             stockBajo(herrajes);
+//             break
+//         case 6:
+//             eliminarHerraje(herrajes);
+//             break
+//         case 7:
+//             idReset(herrajes);
+//             break
+//         default:
+//             alert("Opcion inexistente. Intente de nuevo");
+//     }
+// }

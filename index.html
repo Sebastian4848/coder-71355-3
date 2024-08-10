@@ -1,22 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Entrega 3 - Inventario Herrajes WauDogShop</title>
 </head>
+
 <body>
 
-        
+
     <h1>Inventario de Herrajes Waudogshop</h1>
-    <h4>Herrajes Metalicos</h4>
-    
-    
+
+    <div class="form">
+        <button id="boton_agregar">Agregar nuevo Herraje</button>
+        <label for="herraje1">Nombre</label>
+        <input type="text" minlength="7" maxlength="25" name="" id="herraje1">
+        <label for="stock1">Stock</label>
+        <input type="number" min="1" max="999" id="stock1">
+    </div>
+
+    <div class="form">
+        <button id="boton_buscar">Buscar Herraje</button>
+        <label for="busqueda1">Buscar</label>
+        <input type="text" minlength="1" maxlength="10" name="" id="busqueda1">
+    </div>
+
+    <div class="form">
+        <button id="boton_nodificar_stock">Modificar Stock</button>
+        <label for="id1">ID</label>
+        <input type="number" min="1" max="999" name="" id="id1">
+        <label for="stock2">Stock</label>
+        <input type="number" min="1" max="999" id="stock2">
+
+    </div>
+
+    <div class="form">
+        <button id="boton_stock_bajo">Mostrar Stock Bajo</button>
+        <label for="stock_bajo1">Nivel de Stock</label>
+        <input type="text" name="" id="stock_bajo1">
+    </div>
+
+    <div class="form">
+        <button id="boton_id_reset">Resetear IDs de Herajes</button>
+    </div>
+
+    <div class="form">
+        <button id="boton_reset">Resetear Inventario</button>
+    </div>
+
     <div id='table'> </div>
 
     <script src="./js/herrajes.js"></script>
     <script src="./js/sistema.js"></script>
     <script src="./js/main.js"></script>
 </body>
+
 </html>
