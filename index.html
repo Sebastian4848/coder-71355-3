@@ -10,23 +10,26 @@
 
 <body>
 
-
     <h1>Inventario de Herrajes Waudogshop</h1>
 
+    <!-- Agregar Nuevo Herraje -->
     <div class="form">
-        <button id="boton_agregar">Agregar nuevo Herraje</button>
+        <button id="boton_agregar" type="submit">Agregar nuevo Herraje</button>
         <label for="herraje1">Nombre</label>
-        <input type="text" minlength="7" maxlength="25" name="" id="herraje1">
+        <input type="text" minlength="3" maxlength="25" id="herraje1">
         <label for="stock1">Stock</label>
-        <input type="number" min="1" max="999" id="stock1">
+        <input type="number" min="5" max="999" id="stock1">
     </div>
 
+    <!-- Buscar Herraje -->
     <div class="form">
         <button id="boton_buscar">Buscar Herraje</button>
         <label for="busqueda1">Buscar</label>
         <input type="text" minlength="1" maxlength="10" name="" id="busqueda1">
+        <button id="boton_resetear_busqueda">Resetear Busqueda</button>
     </div>
 
+    <!-- Modificar Stock de Herraje seleccionando ID -->
     <div class="form">
         <button id="boton_modificar_stock">Modificar Stock</button>
         <label for="id1">ID</label>
@@ -35,30 +38,33 @@
         <input type="number" min="-999" max="999" id="stock2">
     </div>
 
+    <!-- Mostar el stock the herrajes que se encuentran por debajo de un nivel dado -->
     <div class="form">
         <button id="boton_stock_bajo">Mostrar Stock Bajo</button>
         <label for="stock_bajo1">Nivel de Stock</label>
         <input type="number" min="1" max="999" id="stock_bajo1">
+        <button id="boton_resetear_filtro">Resetear Filtro</button>
     </div>
 
+    <!-- Eliminar Herraje seleccionando por ID -->
     <div class="form">
         <button id="boton_eliminar">Eliminar Herraje</button>
         <label for="id2">ID</label>
         <input type="number" min="1" max="999" name="" id="id2">
     </div>
 
+    <!-- Reasignar/Resetear IDs de herrajes para que sean numeros consecutivos -->
     <div class="form">
         <button id="boton_id_reset">Resetear IDs de Herajes</button>
     </div>
 
+    <!-- Resetear inventario para que regrese al inventario inicial -->
     <div class="form">
         <button id="boton_reset">Resetear Inventario</button>
     </div>
 
     <div id='table'> </div>
 
-    <!-- <script src="./js/herrajes.js"></script>
-    <script src="./js/sistema.js"></script> -->
     <script src="./js/main.js"></script>
 </body>
 
