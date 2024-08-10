@@ -9,8 +9,6 @@ var html_base = `<table border='1|1'>
 </tr>
 `
 
-
-
 //? Clase Constructora del Objeto Herraje
 class Herraje {
     constructor(nombre, stock) {
@@ -48,7 +46,7 @@ let herrajes = [
     new Herraje('Argolla 3.2cm Plateado', 29),
 
 ]
-let herrajes_og = herrajes
+const herrajes_og = JSON.parse(JSON.stringify(herrajes));
 
 //? Definicion del sistema como metodo constructor
 
@@ -123,14 +121,14 @@ function eliminarHerraje(herrajes) {
     console.log(herrajeID)
     const index = herrajes.indexOf(herrajeID);
     console.log(index)
-if (index === -1) {
-    console.log(`No se encontro el herraje con ID ${id_herraje}`);
-    return;
-}else{
-    herrajes.splice([index], 1);
-    mostrarTabla(herrajes);
-    actualizarTabla(herrajes)
-}
+    if (index === -1) {
+        console.log(`No se encontro el herraje con ID ${id_herraje}`);
+        return;
+    } else {
+        herrajes.splice([index], 1);
+        mostrarTabla(herrajes);
+        actualizarTabla(herrajes)
+    }
 
 }
 
@@ -144,19 +142,20 @@ function idReset(herrajes) {
 }
 
 //? Opcion 8: Regresar al inventario original inicial
-function inventarioOriginal(herrajes) {
+function inventarioOriginal() {
     // Hacer una copia profunda del inventario original y reasignarlo
     herrajes.length = 0;  // Vacía el array actual
-    for (let herraje of herrajes_og) {
-        herrajes.push(new Herraje(herraje.nombre, herraje.stock));  // Reagregar cada herraje del original
-    }
+    // Copiar los valores desde herrajes_og al array herrajes
+    herrajes.push(...herrajes_og);
+    // Actualizar la tabla para reflejar los cambios
     actualizarTabla(herrajes);
+
 }
 
 //? Opcion 9: Resetear inventario
 
 function inventarioReset(herrajes) {
-actualizarTabla(herrajes)
+    actualizarTabla(herrajes)
 }
 
 //? Opcion 10: Actualizar tabla en el HTML usando el DOM
@@ -187,7 +186,7 @@ boton_modificar_stock.addEventListener('click', () => { agregarIncidencia(herraj
 boton_stock_bajo.addEventListener('click', () => { stockBajo(herrajes) })
 boton_eliminar.addEventListener('click', () => { eliminarHerraje(herrajes) })
 boton_id_reset.addEventListener('click', () => { idReset(herrajes) })
-// boton_reset.addEventListener('click', () => { inventarioOriginal(herrajes) })
+boton_reset.addEventListener('click', () => { inventarioOriginal(herrajes) })
 boton_resetear_busqueda.addEventListener('click', () => { inventarioReset(herrajes) })
 boton_resetear_filtro.addEventListener('click', () => { inventarioReset(herrajes) })
 
