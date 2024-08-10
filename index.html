@@ -28,18 +28,23 @@
     </div>
 
     <div class="form">
-        <button id="boton_nodificar_stock">Modificar Stock</button>
+        <button id="boton_modificar_stock">Modificar Stock</button>
         <label for="id1">ID</label>
         <input type="number" min="1" max="999" name="" id="id1">
         <label for="stock2">Stock</label>
-        <input type="number" min="1" max="999" id="stock2">
-
+        <input type="number" min="-999" max="999" id="stock2">
     </div>
 
     <div class="form">
         <button id="boton_stock_bajo">Mostrar Stock Bajo</button>
         <label for="stock_bajo1">Nivel de Stock</label>
-        <input type="text" name="" id="stock_bajo1">
+        <input type="number" min="1" max="999" id="stock_bajo1">
+    </div>
+
+    <div class="form">
+        <button id="boton_eliminar">Eliminar Herraje</button>
+        <label for="id2">ID</label>
+        <input type="number" min="1" max="999" name="" id="id2">
     </div>
 
     <div class="form">
@@ -52,8 +57,8 @@
 
     <div id='table'> </div>
 
-    <script src="./js/herrajes.js"></script>
-    <script src="./js/sistema.js"></script>
+    <!-- <script src="./js/herrajes.js"></script>
+    <script src="./js/sistema.js"></script> -->
     <script src="./js/main.js"></script>
 </body>
 
