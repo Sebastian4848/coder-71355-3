@@ -1,6 +1,8 @@
+
+
 //? MAIN: Interaccion del usuario con el codigo.
 
-let sistema_stock = new Sistema(herrajes)
+// let sistema_stock = new Sistema(herrajes)
 
 
 //? Funciones para hacer validacion de datos de entrada.

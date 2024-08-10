@@ -1,5 +1,5 @@
 //? SISTEMA: Definicion de las funciones principales del sistema.
-
+let sistema_stock = new Sistema(herrajes)
 
 //? Menu principal.
 
@@ -14,6 +14,7 @@ const menu_str = `
     Presiona 0 para VOLVER o SALIR.
 `
 
+
 //? Definicion del sistema como metodo constructor
 
 class Sistema {
@@ -24,11 +25,18 @@ class Sistema {
     //? Opcion 2: Agregar nuevo herraje al inventario, Se declara como un metodo dentro de la la clase contructora.
 
     nuevoHerraje() {
-        const nombre = solicitarDato('cadena', 'Ingrese el nombre del herraje', 'Herraje Dorado 2.5cm');
-        const stock = solicitarDato('entero', 'Ingrese el stock actual del herraje', '10');
+
+        let nombre = document.getElementById("herraje1").value;
+        let stock = document.getElementById("stock1").value;
         this.herrajes.push(new Herraje(nombre, stock))
         mostrarTabla(herrajes);
         actualizarTabla(herrajes)
+
+        // const nombre = solicitarDato('cadena', 'Ingrese el nombre del herraje', 'Herraje Dorado 2.5cm');
+        // const stock = solicitarDato('entero', 'Ingrese el stock actual del herraje', '10');
+        // this.herrajes.push(new Herraje(nombre, stock))
+        // mostrarTabla(herrajes);
+        // actualizarTabla(herrajes)
     }
 }
 
@@ -109,3 +117,12 @@ function actualizarTabla(array) {
 
 
 actualizarTabla(herrajes)
+
+let boton_agregar = document.getElementById("boton_agregar")
+let boton_buscar = document.getElementById("boton_buscar")
+let boton_modificar_stock = document.getElementById("boton_modificar_stock")
+let boton_stock_bajo = document.getElementById("boton_stock_bajo")
+let boton_id_reset = document.getElementById("boton_id_reset")
+let boton_reset = document.getElementById("boton_reset")
+
+boton_agregar.addEventListener('click',sistema_stock.nuevoHerraje())
