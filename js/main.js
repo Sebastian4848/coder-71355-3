@@ -55,13 +55,14 @@ class Sistema {
         this.herrajes = herrajes;
     }
 
-    //? Opcion 2: Agregar nuevo herraje al inventario, Se declara como un metodo dentro de la la clase contructora.
+    //? Funcion 1: Agregar nuevo herraje al inventario, Se declara como un metodo dentro de la la clase contructora.
     nuevoHerraje() {
         let nombre = document.getElementById("herraje1").value;
         let stock = document.getElementById("stock1").value;
         this.herrajes.push(new Herraje(nombre, stock))
         mostrarTabla(herrajes);
         actualizarTabla(herrajes)
+        limpiarInputs()
     }
 }
 
@@ -70,14 +71,14 @@ class Sistema {
 let sistema_stock = new Sistema(herrajes)
 
 
-// //? Opcion 1: Mostrar tabla rn la consola para usar en el debug
+// //? Funcion 2: Mostrar tabla en la consola para usar en el debug
 function mostrarTabla(datos) {
     // console.clear();
     console.table(datos);
 }
 mostrarTabla(herrajes)
 
-//? Opcion 3: Buscar herrajes.
+//? Funcion 3: Buscar herrajes.
 function filtrarHerrajes(herraje) {
     let busqueda = document.getElementById("busqueda1").value;
     const result = herrajes.filter((herraje) => herraje.nombre.toLowerCase().includes(busqueda.toLocaleLowerCase()));
@@ -88,18 +89,20 @@ function filtrarHerrajes(herraje) {
         document.getElementById("table").innerHTML = html_base
     }
     console.log(`Se encontraron ${result.length} herrajes`);
+    limpiarInputs()
 }
 
-//? Opcion 4: Agregar incidencia, modificar inventario.
+//? Funcion 4: Agregar incidencia, modificar inventario.
 function agregarIncidencia(herrajes) {
     let id_herraje = document.getElementById("id1").value;
     let cantidad = parseInt(document.getElementById("stock2").value, 10);
     herrajes[id_herraje - 1].stock = herrajes[id_herraje - 1].stock + cantidad;
     mostrarTabla(herrajes);
     actualizarTabla(herrajes)
+    limpiarInputs()
 }
 
-//? Opcion 5: Mostrar stock bajo
+//? Funcion 5: Mostrar stock bajo
 function stockBajo(herrajes) {
     let busqueda = parseInt(document.getElementById("stock_bajo1").value, 10);
     console.log(busqueda)
@@ -111,9 +114,10 @@ function stockBajo(herrajes) {
         document.getElementById("table").innerHTML = html_base
     }
     console.log(`Se encontraron ${result.length} herrajes`);
+    limpiarInputs()
 }
 
-//? Opcion 6: Eliminar herraje
+//? Funcion 6: Eliminar herraje
 function eliminarHerraje(herrajes) {
     let id_herraje = parseInt(document.getElementById("id2").value, 10);
     console.log(id_herraje)
@@ -129,10 +133,11 @@ function eliminarHerraje(herrajes) {
         mostrarTabla(herrajes);
         actualizarTabla(herrajes)
     }
+    limpiarInputs()
 
 }
 
-//? Opcion 7: Regenerar IDs
+//? Funcion 7: Regenerar IDs
 function idReset(herrajes) {
     for (let i = 0; i < herrajes.length; i++) {
         herrajes[i].id = i + 1;
@@ -141,7 +146,7 @@ function idReset(herrajes) {
     actualizarTabla(herrajes)
 }
 
-//? Opcion 8: Regresar al inventario original inicial
+//? Funcion 8: Regresar al inventario original inicial
 function inventarioOriginal() {
     // Hacer una copia profunda del inventario original y reasignarlo
     herrajes.length = 0;  // Vacía el array actual
@@ -153,13 +158,12 @@ function inventarioOriginal() {
 
 }
 
-//? Opcion 9: Resetear inventario
-
+//? Funcion 9: Resetear inventario
 function inventarioReset(herrajes) {
     actualizarTabla(herrajes)
 }
 
-//? Opcion 10: Actualizar tabla en el HTML usando el DOM
+//? Funcion 10: Actualizar tabla en el HTML usando el DOM
 function actualizarTabla(array) {
     let html = html_base;
     for (let i = 0; i < array.length; i++) {
@@ -171,6 +175,8 @@ function actualizarTabla(array) {
     }
     document.getElementById("table").innerHTML = html
 }
+
+
 
 actualizarTabla(herrajes)
 
@@ -190,6 +196,18 @@ boton_id_reset.addEventListener('click', () => { idReset(herrajes) })
 boton_reset.addEventListener('click', () => { inventarioOriginal(herrajes) })
 boton_resetear_busqueda.addEventListener('click', () => { inventarioReset(herrajes) })
 boton_resetear_filtro.addEventListener('click', () => { inventarioReset(herrajes) })
+
+
+//? Funcion 11: Limpiar todos los inputs
+function limpiarInputs() {
+    document.getElementById("herraje1").value = "";
+    document.getElementById("stock1").value = "";
+    document.getElementById("busqueda1").value = "";
+    document.getElementById("id1").value = "";
+    document.getElementById("stock2").value = "";
+    document.getElementById("stock_bajo1").value = "";
+    document.getElementById("id2").value = "";
+}
 
 
 

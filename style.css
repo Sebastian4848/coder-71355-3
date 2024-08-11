@@ -6,11 +6,8 @@
 }
 
 
-/* html {
-    height: 100vh;
-} */
-
-html, body {
+html,
+body {
     background-color: var(--bg-color);
     font-family: sans-serif;
 }
@@ -23,13 +20,15 @@ body {
     align-items: center;
 }
 
-h1, h4, h5 {
-    margin:0;
+h1,
+h4,
+h5 {
+    margin: 0;
 }
 
 h1 {
     font-size: 6vh;
-    color:    --color2;
+    color: --color2;
 }
 
 
@@ -39,36 +38,63 @@ h4 {
 
     font-size: 4vh;
     color: var(--color2);
-    
+
 }
 
-button, label, input{
+button,
+label,
+input {
     font-size: 1.5vh;
-    /* padding: 0px 8px 0px 8px; */
     margin: 0px 8px 0px 8px
 }
 
-button, input{
-width:230px;
+button,
+input {
+    width: 230px;
 }
 
-label{
-    width:102px;
-    }
+label {
+    width: 75px;
+}
 
-.form{
+.form {
     display: flex;
     flex-direction: row;
     justify-content: left;
     align-items: center;
-    padding: 10px;
-    margin: 10px;
+    padding: 6px 0px 6px 0px;
+    margin:  6px 0px 6px 0px;
     background-color: var(--color2);
     border-width: 1px;
     border-color: black;
     border-style: solid;
     width: 100%;
 }
+
+.table{
+    width: 50%;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #252525;
+    text-align: left;
+    padding: 4px 4px 4px 4px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+tr:nth-child(odd) {
+    background-color: #b6b6b6;
+}
+
 
 /* .elemento_std1{
     width:300px;
