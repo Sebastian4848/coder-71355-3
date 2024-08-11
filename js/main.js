@@ -148,6 +148,7 @@ function inventarioOriginal() {
     // Copiar los valores desde herrajes_og al array herrajes
     herrajes.push(...herrajes_og);
     // Actualizar la tabla para reflejar los cambios
+    idReset(herrajes)
     actualizarTabla(herrajes);
 
 }

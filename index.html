@@ -14,18 +14,27 @@
 
     <!-- Agregar Nuevo Herraje -->
     <div class="form">
-        <button id="boton_agregar" type="submit">Agregar nuevo Herraje</button>
-        <label for="herraje1">Nombre</label>
-        <input type="text" minlength="3" maxlength="25" id="herraje1">
-        <label for="stock1">Stock</label>
-        <input type="number" min="5" max="999" id="stock1">
+        <button class="elemento_std1" id="boton_agregar" type="submit">Agregar nuevo Herraje</button>
+        <label class="elemento_std2" for="herraje1">Nombre</label>
+        <input type="text" class="elemento_std" minlength="3" maxlength="25" placeholder="Cuadro 2cm Dorado" id="herraje1">
+        <label class="elemento_std2" for="stock1">Stock</label>
+        <input class="elemento_std1" type="number" min="5" max="999" placeholder="12" id="stock1">
+    </div>
+
+    <!-- Eliminar Herraje seleccionando por ID -->
+    <div class="form">
+        <button id="boton_eliminar">Eliminar Herraje</button>
+        <label for="id2">ID</label>
+        <input type="number" min="1" max="999" name="" placeholder="3" id="id2">
+        <label class="" for=""> </label>
     </div>
 
     <!-- Buscar Herraje -->
     <div class="form">
         <button id="boton_buscar">Buscar Herraje</button>
         <label for="busqueda1">Buscar</label>
-        <input type="text" minlength="1" maxlength="10" name="" id="busqueda1">
+        <input type="text" minlength="1" maxlength="10" name="" placeholder="Pasador" id="busqueda1">
+        <label class="" for=""></label>
         <button id="boton_resetear_busqueda">Resetear Busqueda</button>
     </div>
 
@@ -33,24 +42,18 @@
     <div class="form">
         <button id="boton_modificar_stock">Modificar Stock</button>
         <label for="id1">ID</label>
-        <input type="number" min="1" max="999" name="" id="id1">
+        <input type="number" min="1" max="999" placeholder="5" name="" id="id1">
         <label for="stock2">Stock</label>
-        <input type="number" min="-999" max="999" id="stock2">
+        <input type="number" min="-999" max="999" placeholder="10" id="stock2">
     </div>
 
     <!-- Mostar el stock the herrajes que se encuentran por debajo de un nivel dado -->
     <div class="form">
         <button id="boton_stock_bajo">Mostrar Stock Bajo</button>
         <label for="stock_bajo1">Nivel de Stock</label>
-        <input type="number" min="1" max="999" id="stock_bajo1">
+        <input type="number" min="1" max="999" placeholder="10" id="stock_bajo1">
+        <label class="" for=""></label>
         <button id="boton_resetear_filtro">Resetear Filtro</button>
-    </div>
-
-    <!-- Eliminar Herraje seleccionando por ID -->
-    <div class="form">
-        <button id="boton_eliminar">Eliminar Herraje</button>
-        <label for="id2">ID</label>
-        <input type="number" min="1" max="999" name="" id="id2">
     </div>
 
     <!-- Reasignar/Resetear IDs de herrajes para que sean numeros consecutivos -->
