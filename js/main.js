@@ -203,7 +203,18 @@ function actualizarTabla(array) {
     document.getElementById("table").innerHTML = html
 }
 
+//? Funcion 14: Vaciar Local Storage
+function vaciarLocal() {
+    localStorage.clear();
+    mensajesReset()
+    document.getElementById("msg_9").textContent = "Local Storage eliminado";
+
+}
+
+
 actualizarTabla(herrajes)
+
+//? Guardando los botones del DOM
 
 let boton_agregar = document.getElementById("boton_agregar")
 let boton_buscar = document.getElementById("boton_buscar")
@@ -211,6 +222,11 @@ let boton_modificar_stock = document.getElementById("boton_modificar_stock")
 let boton_stock_bajo = document.getElementById("boton_stock_bajo")
 let boton_id_reset = document.getElementById("boton_id_reset")
 let boton_reset = document.getElementById("boton_reset")
+let boton_guardar_local = document.getElementById("boton_guardar_local")
+let boton_eliminar_local = document.getElementById("boton_eliminar_local")
+let boton_cargar_local = document.getElementById("boton_cargar_local")
+
+//? Agregando event listeners a los botones
 
 boton_agregar.addEventListener('click', () => { sistema_stock.nuevoHerraje() })
 boton_buscar.addEventListener('click', () => { filtrarHerrajes(herrajes) })
@@ -221,6 +237,9 @@ boton_id_reset.addEventListener('click', () => { idReset(herrajes) })
 boton_reset.addEventListener('click', () => { inventarioOriginal(herrajes) })
 boton_resetear_busqueda.addEventListener('click', () => { inventarioReset(herrajes) })
 boton_resetear_filtro.addEventListener('click', () => { inventarioReset(herrajes) })
+boton_guardar_local.addEventListener('click', () => { guardarLocal() })
+boton_eliminar_local.addEventListener('click', () => { vaciarLocal() })
+boton_cargar_local.addEventListener('click', () => { cargarLocal() })
 
 
 //? Funcion 11: Limpiar todos los inputs
@@ -243,7 +262,41 @@ function mensajesReset() {
     document.getElementById("msg_5").textContent = "Ingrese el nivel de stock a revisar";
     document.getElementById("msg_6").textContent = "";
     document.getElementById("msg_7").textContent = "";
+    document.getElementById("msg_8").textContent = "";
+    document.getElementById("msg_9").textContent = "";
+    document.getElementById("msg_10").textContent = "";
 }
+
+//? Funcion 13: Guardar en local storage
+function guardarLocal() {
+    let inventarioJSON = JSON.stringify(herrajes);
+    localStorage.setItem("inventario", inventarioJSON);
+    mensajesReset()
+    document.getElementById("msg_8").textContent = "Inventario guardado en Local Storage";
+
+}
+
+
+//? Funcion 15: Cargar Local Storage
+function cargarLocal() {
+
+    herrajes.length = 0;
+    let inventarioJSON = localStorage.getItem("inventario");
+    let inventario = JSON.parse(inventarioJSON);
+    if (inventario == null) {
+        mensajesReset()
+        document.getElementById("msg_10").textContent = "Local Storage vacío";
+        return;
+    } else {
+        herrajes.push(...inventario);
+        actualizarTabla(herrajes);
+        mensajesReset()
+        document.getElementById("msg_10").textContent = "Inventario cargado desde Local Storage";
+    }
+
+
+}
+
 
 
 
