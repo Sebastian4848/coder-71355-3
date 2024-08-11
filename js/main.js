@@ -63,6 +63,8 @@ class Sistema {
         mostrarTabla(herrajes);
         actualizarTabla(herrajes)
         limpiarInputs()
+        mensajesReset()
+        document.getElementById("msg_1").textContent = "Herraje agregado satisfactoriamente";
     }
 }
 
@@ -84,11 +86,14 @@ function filtrarHerrajes(herraje) {
     const result = herrajes.filter((herraje) => herraje.nombre.toLowerCase().includes(busqueda.toLocaleLowerCase()));
     mostrarTabla(result);
     actualizarTabla(result)
+    mensajesReset()
     if (result.length == 0) {
         // alert(`La busqueda de ${busqueda} arrojo 0 resultados`);
         document.getElementById("table").innerHTML = html_base
+        document.getElementById("msg_3").textContent = `La busqueda de ${busqueda} arrojo 0 resultados`;
     }
-    console.log(`Se encontraron ${result.length} herrajes`);
+    // console.log(`Se encontraron ${result.length} herrajes`);
+    document.getElementById("msg_3").textContent = `Se encontraron ${result.length} herrajes`;
     limpiarInputs()
 }
 
@@ -96,10 +101,22 @@ function filtrarHerrajes(herraje) {
 function agregarIncidencia(herrajes) {
     let id_herraje = document.getElementById("id1").value;
     let cantidad = parseInt(document.getElementById("stock2").value, 10);
-    herrajes[id_herraje - 1].stock = herrajes[id_herraje - 1].stock + cantidad;
-    mostrarTabla(herrajes);
-    actualizarTabla(herrajes)
-    limpiarInputs()
+    let idExists = herrajes.some(herraje => herraje.id == id_herraje);
+    console.log(idExists)
+    if (idExists) {
+        herrajes[id_herraje - 1].stock = herrajes[id_herraje - 1].stock + cantidad;
+        mostrarTabla(herrajes);
+        actualizarTabla(herrajes)
+        limpiarInputs()
+        mensajesReset()
+        document.getElementById("msg_4").textContent = "Stock actualizado satisfactoriamente";
+    } else {
+        document.getElementById("msg_4").textContent = "ID no encontrado";
+        limpiarInputs()
+    }
+
+
+
 }
 
 //? Funcion 5: Mostrar stock bajo
@@ -109,11 +126,13 @@ function stockBajo(herrajes) {
     const result = herrajes.filter((herraje) => herraje.stock <= busqueda);
     mostrarTabla(result);
     actualizarTabla(result)
+    mensajesReset()
     if (result.length == 0) {
-        // alert(`La busqueda de herrajes con stock menor o igual a ${busqueda} arrojo 0 resultados`);
+        document.getElementById("msg_5").textContent = `La busqueda de stock menor o igual a ${busqueda} arrojo 0 resultados`;
         document.getElementById("table").innerHTML = html_base
+    } else {
+        document.getElementById("msg_5").textContent = `Se encontraron ${result.length} herrajes`;
     }
-    console.log(`Se encontraron ${result.length} herrajes`);
     limpiarInputs()
 }
 
@@ -125,13 +144,16 @@ function eliminarHerraje(herrajes) {
     console.log(herrajeID)
     const index = herrajes.indexOf(herrajeID);
     console.log(index)
+    mensajesReset()
     if (index === -1) {
-        console.log(`No se encontro el herraje con ID ${id_herraje}`);
+        document.getElementById("msg_2").textContent = `No se encontro el herraje con ID ${id_herraje}`;
+        // console.log(`No se encontro el herraje con ID ${id_herraje}`);
         return;
     } else {
         herrajes.splice([index], 1);
         mostrarTabla(herrajes);
         actualizarTabla(herrajes)
+        document.getElementById("msg_2").textContent = "Herraje eliminado satisfactoriamente";
     }
     limpiarInputs()
 
@@ -139,11 +161,13 @@ function eliminarHerraje(herrajes) {
 
 //? Funcion 7: Regenerar IDs
 function idReset(herrajes) {
+    mensajesReset()
     for (let i = 0; i < herrajes.length; i++) {
         herrajes[i].id = i + 1;
     }
     // mostrarTabla(herrajes);
     actualizarTabla(herrajes)
+    document.getElementById("msg_6").textContent = "IDs de Herrajes reseteados satisfactoriamente";
 }
 
 //? Funcion 8: Regresar al inventario original inicial
@@ -155,11 +179,14 @@ function inventarioOriginal() {
     // Actualizar la tabla para reflejar los cambios
     idReset(herrajes)
     actualizarTabla(herrajes);
+    mensajesReset()
+    document.getElementById("msg_7").textContent = "Tabla reseteada a parametros iniciales";
 
 }
 
-//? Funcion 9: Resetear inventario
+// //? Funcion 9: Resetear Diplay Inventario
 function inventarioReset(herrajes) {
+    mensajesReset()
     actualizarTabla(herrajes)
 }
 
@@ -175,8 +202,6 @@ function actualizarTabla(array) {
     }
     document.getElementById("table").innerHTML = html
 }
-
-
 
 actualizarTabla(herrajes)
 
@@ -208,6 +233,19 @@ function limpiarInputs() {
     document.getElementById("stock_bajo1").value = "";
     document.getElementById("id2").value = "";
 }
+
+//? Funcion 12: Resetear todos los mensajes
+function mensajesReset() {
+    document.getElementById("msg_1").textContent = "Ingrese nombre y Stock";
+    document.getElementById("msg_2").textContent = "Ingrese ID de Herraje a eliminar";
+    document.getElementById("msg_3").textContent = "Ingrese busqueda";
+    document.getElementById("msg_4").textContent = "Ingrese el ID y la cantidad a sumar o restar";
+    document.getElementById("msg_5").textContent = "Ingrese el nivel de stock a revisar";
+    document.getElementById("msg_6").textContent = "";
+    document.getElementById("msg_7").textContent = "";
+}
+
+
 
 
 
