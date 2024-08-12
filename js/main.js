@@ -59,12 +59,20 @@ class Sistema {
     nuevoHerraje() {
         let nombre = document.getElementById("herraje1").value;
         let stock = document.getElementById("stock1").value;
-        this.herrajes.push(new Herraje(nombre, stock))
-        mostrarTabla(herrajes);
-        actualizarTabla(herrajes)
-        limpiarInputs()
-        mensajesReset()
-        document.getElementById("msg_1").textContent = "Herraje agregado satisfactoriamente";
+        if (nombre == "" || stock == ""|| stock < 0 || Number.isInteger(parseInt(nombre)) || nombre.length > 20 || nombre.length < 7) {
+            if(nombre.length > 20||nombre.length < 7){
+                document.getElementById("msg_1").textContent = "El nombre debe tener entre 7 y 20 caracteres";
+            }else{
+                document.getElementById("msg_1").textContent = "Ingresa datos validos por favor";
+            }
+        } else {
+            this.herrajes.push(new Herraje(nombre, stock))
+            mostrarTabla(herrajes);
+            actualizarTabla(herrajes)
+            limpiarInputs()
+            mensajesReset()
+            document.getElementById("msg_1").textContent = "Herraje agregado satisfactoriamente";
+        }
     }
 }
 
@@ -76,7 +84,7 @@ let sistema_stock = new Sistema(herrajes)
 // //? Funcion 2: Mostrar tabla en la consola para usar en el debug
 function mostrarTabla(datos) {
     // console.clear();
-    console.table(datos);
+    // console.table(datos);
 }
 mostrarTabla(herrajes)
 
@@ -102,7 +110,7 @@ function agregarIncidencia(herrajes) {
     let id_herraje = document.getElementById("id1").value;
     let cantidad = parseInt(document.getElementById("stock2").value, 10);
     let idExists = herrajes.some(herraje => herraje.id == id_herraje);
-    console.log(idExists)
+
     if (idExists) {
         herrajes[id_herraje - 1].stock = herrajes[id_herraje - 1].stock + cantidad;
         mostrarTabla(herrajes);
@@ -122,7 +130,6 @@ function agregarIncidencia(herrajes) {
 //? Funcion 5: Mostrar stock bajo
 function stockBajo(herrajes) {
     let busqueda = parseInt(document.getElementById("stock_bajo1").value, 10);
-    console.log(busqueda)
     const result = herrajes.filter((herraje) => herraje.stock <= busqueda);
     mostrarTabla(result);
     actualizarTabla(result)
@@ -139,24 +146,24 @@ function stockBajo(herrajes) {
 //? Funcion 6: Eliminar herraje
 function eliminarHerraje(herrajes) {
     let id_herraje = parseInt(document.getElementById("id2").value, 10);
-    console.log(id_herraje)
-    const herrajeID = herrajes.find((herraje) => herraje.id === id_herraje)
-    console.log(herrajeID)
-    const index = herrajes.indexOf(herrajeID);
-    console.log(index)
-    mensajesReset()
-    if (index === -1) {
-        document.getElementById("msg_2").textContent = `No se encontro el herraje con ID ${id_herraje}`;
-        // console.log(`No se encontro el herraje con ID ${id_herraje}`);
-        return;
+    if (isNaN(id_herraje)){
+        document.getElementById("msg_2").textContent = "Por favor ingresa un ID";
     } else {
-        herrajes.splice([index], 1);
-        mostrarTabla(herrajes);
-        actualizarTabla(herrajes)
-        document.getElementById("msg_2").textContent = "Herraje eliminado satisfactoriamente";
+        const herrajeID = herrajes.find((herraje) => herraje.id === id_herraje)
+        const index = herrajes.indexOf(herrajeID);
+        mensajesReset()
+        if (index === -1) {
+            document.getElementById("msg_2").textContent = `No se encontro el herraje con ID ${id_herraje}`;
+            // console.log(`No se encontro el herraje con ID ${id_herraje}`);
+            return;
+        } else {
+            herrajes.splice([index], 1);
+            mostrarTabla(herrajes);
+            actualizarTabla(herrajes)
+            document.getElementById("msg_2").textContent = "Herraje eliminado satisfactoriamente";
+        }
+        limpiarInputs()
     }
-    limpiarInputs()
-
 }
 
 //? Funcion 7: Regenerar IDs
@@ -310,29 +317,31 @@ function cargarLocal() {
 
 
 
-//? Funciones para hacer validacion de datos de entrada.
+// //? Funciones para hacer validacion de datos de entrada.
 
-function solicitarDato(tipo, mensaje, sugerencia = '') {
-    let dato;
-    if (tipo == 'entero_positivo') {
-        do {
-            dato = parseFloat(prompt(mensaje, sugerencia));
-        } while (isNaN(dato) || dato < 0);
-    }
-    else if (tipo == 'entero') {
-        do {
-            dato = parseInt(prompt(mensaje, sugerencia));
-        } while (isNaN(dato));
-    }
-    else if (tipo == 'cadena') {
-        do {
-            dato = prompt(mensaje, sugerencia);
-        } while (dato == '');
-    }
-    else if (tipo == 'cadena_minusculas') {
-        do {
-            dato = prompt(mensaje, sugerencia).toLocaleLowerCase();
-        } while (dato == '');
-    }
-    return dato;
-}
+// function solicitarDato(tipo, mensaje, sugerencia = '') {
+//     let dato;
+//     if (tipo == 'entero_positivo') {
+//         do {
+//             dato = parseFloat(prompt(mensaje, sugerencia));
+//         } while (isNaN(dato) || dato < 0);
+//     }
+//     else if (tipo == 'entero') {
+//         do {
+//             dato = parseInt(prompt(mensaje, sugerencia));
+//         } while (isNaN(dato));
+//     }
+//     else if (tipo == 'cadena') {
+//         do {
+//             dato = prompt(mensaje, sugerencia);
+//         } while (dato == '');
+//     }
+//     else if (tipo == 'cadena_minusculas') {
+//         do {
+//             dato = prompt(mensaje, sugerencia).toLocaleLowerCase();
+//         } while (dato == '');
+//     }
+//     return dato;
+// }
+
+
